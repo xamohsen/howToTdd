@@ -5,4 +5,4 @@ class Dollar:
         self.amount = amount
 
     def times(self, multiplier):
-        pass
+        return Dollar(self.amount*multiplier)
