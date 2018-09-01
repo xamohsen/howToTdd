@@ -6,5 +6,8 @@ class DollarTest(unittest.TestCase):
 
     def test_multiplication(self):
         d = Dollar(5)
-        self.assertEqual(10, d.times(2).amount)
-        self.assertEqual(15, d.times(3).amount)
+        self.assertEqual(Dollar(10), d.times(2))
+        self.assertEqual(Dollar(15), d.times(3))
+
+    def test_equality(self):
+        self.assertTrue(Dollar(5).__eq__(Dollar(5)))
