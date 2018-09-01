@@ -22,3 +22,5 @@ class MoneyTest(unittest.TestCase):
         # test franc equality
         self.assertTrue(Franc(5).__eq__(Franc(5)))
         self.assertFalse(Franc(5).__eq__(Franc(15)))
+        # test money equality
+        self.assertFalse(Franc(5).__eq__(Dollar(15)))
