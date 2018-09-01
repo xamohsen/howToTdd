@@ -1,3 +1,5 @@
+import abc
+
 
 class Money:
     _amount = 0
@@ -6,5 +8,7 @@ class Money:
         print(type(self), "  ==> ", type(money))
         return self.amount == money.amount and type(self) == type(money)
 
-    def dollar(self, amount):
-        return Dollar(amount)
+    abc.abstractclassmethod
+
+    def currency(self):
+        """ """

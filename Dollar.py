@@ -8,3 +8,7 @@ class Dollar(Money):
 
     def times(self, multiplier):
         return Dollar(self.amount * multiplier)
+
+    @staticmethod
+    def currency(amount):
+        return Dollar(amount)
