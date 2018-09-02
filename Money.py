@@ -1,10 +1,11 @@
 
 
+
 class Money:
     amount = 0
     currency = ""
 
-    def __init__(self, amount, currency):
+    def __init__(self, amount=0, currency=""):
         self.amount = amount
         self.currency = currency
 
@@ -27,4 +28,19 @@ class Money:
         return Money(self.amount * multiplier, self.currency)
 
     def plus(self, addend):
-        return Money(self.amount + addend.amount, self.currency)
+        return Sum(self, addend)
+
+class Bank:
+
+    def reduce(self, source, to):
+        return Money.dollar(10)
+
+
+class Sum:
+
+    aged = Money()
+    addend = Money()
+
+    def __init__(self, aged, addend):
+        self.aged = aged
+        self.addend = addend

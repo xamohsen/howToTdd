@@ -1,6 +1,5 @@
 import unittest
 
-from Bank import Bank
 from Money import *
 
 
@@ -29,6 +28,5 @@ class MoneyTest(unittest.TestCase):
     def testSimpleAdd(self):
         five = Money.dollar(5)
         sum = five.plus(five)
-        bank = Bank()
-        reduced = bank.reduce(sum, "USD")
-        self.assertEqual(Money.dollar(10), reduced)
+        self.assertEqual(five, sum.aged)
+        self.assertEqual(five, sum.addend)
