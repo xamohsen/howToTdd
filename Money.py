@@ -8,6 +8,14 @@ class Money:
         self.amount = amount
         self.currency = currency
 
+    @staticmethod
+    def dollar(amount):
+        return Money(amount, "USD")
+
+    @staticmethod
+    def franc(amount):
+        return Money(amount, "CHF")
+
     def __eq__(self, money):
         return self.amount == money.amount and \
                self.currency == money.currency
