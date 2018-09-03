@@ -25,8 +25,25 @@ class MoneyTest(unittest.TestCase):
         self.assertEqual("USD", Money(1, "USD").getCurrency())
         self.assertEqual("CHF", Money(1, "CHF").getCurrency())
 
+    def testPlusReturnSum(self):
+        five = Money.dollar(5)
+        sum = five.plus(five)
+        self.assertEqual(five, sum.aged)
+        self.assertEqual(five, sum.addend)
+
+    def testReduceSum(self):
+        sum = Sum(Money.dollar(3), Money.dollar(4))
+        bank = Bank()
+        result = bank.reduce(sum, "USD")
+        self.assertEqual(Money.dollar(7), result)
+
     def testSimpleAdd(self):
         five = Money.dollar(5)
         sum = five.plus(five)
         self.assertEqual(five, sum.aged)
         self.assertEqual(five, sum.addend)
+
+    def testReduceMoney(self):
+        bank = Bank()
+        result = bank.reduce(Money.dollar(1), "USD")
+        self.assertEqual(Money.dollar(1), result)

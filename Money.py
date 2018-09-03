@@ -1,6 +1,5 @@
 
 
-
 class Money:
     amount = 0
     currency = ""
@@ -10,12 +9,12 @@ class Money:
         self.currency = currency
 
     @staticmethod
-    def dollar(amount):
-        return Money(amount, "USD")
+    def dollar(amount, currency="USD"):
+        return Money(amount, currency)
 
     @staticmethod
-    def franc(amount):
-        return Money(amount, "CHF")
+    def franc(amount, currency="CHF"):
+        return Money(amount, currency)
 
     def __eq__(self, money):
         return self.amount == money.amount and \
@@ -30,10 +29,13 @@ class Money:
     def plus(self, addend):
         return Sum(self, addend)
 
+
 class Bank:
 
-    def reduce(self, source, to):
-        return Money.dollar(10)
+    def reduce(self, sum, to):
+        if type(sum) == Money:
+            return sum
+        return sum.reduce(to)
 
 
 class Sum:
@@ -44,3 +46,7 @@ class Sum:
     def __init__(self, aged, addend):
         self.aged = aged
         self.addend = addend
+
+    def reduce(self, to):
+        amount = self.aged.amount + self.addend.amount
+        return Money.dollar(amount, to)
